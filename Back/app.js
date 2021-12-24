@@ -12,7 +12,7 @@ let db
 try{
     db = mongoose.connect("mongodb+srv://coucou:coucou@cluster0.lc16o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{useNewUrlParser:true})
 }catch(e){
-    throw new Error('test'); 
+    throw new Error('Database error'); 
 }
 const {jwtSecret} = require("./package.json")
 
