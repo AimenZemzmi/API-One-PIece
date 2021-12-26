@@ -59,8 +59,12 @@ app.post('/crew', async function (req, res) {
 });
 
 app.put('/updateCrew/:id', async function (req, res) {
-  const { id, name, ship, picture } = req.body;
-  const data = await crewModel.updateOne({ _id: id }, { name, ship, picture });
+  const { name, ship, picture } = req.body;
+  console.log(req.params.id);
+  const data = await crewModel.updateOne(
+    { _id: req.params.id },
+    { name, ship, picture }
+  );
   res.status(201).json(data);
 });
 
