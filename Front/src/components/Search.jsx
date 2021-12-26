@@ -5,10 +5,10 @@ import { Container, Button, Form } from "react-bootstrap"
 
 export default function Search() {
   const [searchInput, setSearchInput] = useState("")
-  const navigate = useNavigate()
+  //const navigate = useNavigate()
   function search(e) {
     e.preventDefault()
-    navigate(`/searchParams/${searchInput}`)
+    //navigate(`/searchParams/${searchInput}`)
   }
 
   return (
