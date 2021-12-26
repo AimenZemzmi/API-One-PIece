@@ -58,12 +58,10 @@ app.post('/crew', async function (req, res) {
   res.status(201).json({ id: datas['_id'] });
 });
 
-app.put('/crew/:id', async function (req, res) {
-  // La modification d'un utilisateur
-  const { _id, name } = req.params;
-
-  const datas = await crewModel.findOneAndUpdate({ _id }, { name });
-  res.status(201).json(datas);
+app.put('/updateCrew/:id', async function (req, res) {
+  const { id, name, ship, picture } = req.body;
+  const data = await crewModel.updateOne({ _id: id }, { name, ship, picture });
+  res.status(201).json(data);
 });
 
 app.delete('/user/:id', async function (req, res) {
