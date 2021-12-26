@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const cors = require("cors")
 const mongoose = require("mongoose")
-const userModel = require("./schemas/users")
+const crewModel = require("./schemas/Crew")
 const bodyParser = require("body-parser")
 const categoryModel = require("./schemas/category")
 const {apiKey} = require("./package.json")
@@ -45,13 +45,13 @@ app.get("/user/:id", function(req,res){
     res.status(200).json(selectUser[0])
 })
 
-app.post("/user", async function(req,res){
-    const {nom, prenom, age} = req.body
+app.post("/crew", async function(req,res){
+    const {name, ship, picture} = req.body
     
-    const datas = await userModel.create({
-        nom,
-        prenom,
-        age:+age
+    const datas = await crewModel.create({
+        name,
+        ship,
+        picture
     })
     res.status(201).json({id:datas["_id"]})
 })

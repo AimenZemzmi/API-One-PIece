@@ -38,16 +38,16 @@ export default function App() {
       })
   }
 
-  function addUser(event) {
+  function addCrew(event) {
     event.preventDefault()
-    const { nom, prenom, age } = { ...formAjout }
+    const { name, ship, picture } = { ...formAjout }
     //alert(category)
-    let url = `http://localhost:3010/user`
+    let url = `http://localhost:3010/crew`
 
     axios.post(url, {
-      nom,
-      prenom,
-      age
+      name,
+      ship,
+      picture
     })
   }
 
@@ -59,51 +59,51 @@ export default function App() {
       <Container>
         <Row mt={5}>
           <Col md="6">
-            <h1>Formulaire ajout utilisateur</h1>
+            <h1>Formulaire ajout équipage</h1>
             <hr />
-            <Form onSubmit={(e) => addUser(e)}>
+            <Form onSubmit={(e) => addCrew(e)}>
 
 
               <Form.Group className="mb-3">
                 <Form.Label>Nom</Form.Label>
                 <Form.Control
-                  value={formAjout.nom}
-                  type="nom"
-                  placeholder="Larrat"
+                  value={formAjout.name}
+                  type="text"
+                  placeholder="Nom de l'équipage"
                   required
                   onChange={(e) => {
                     let tmp = { ...formAjout }
-                    tmp.nom = e.target.value
+                    tmp.name = e.target.value
                     setFormAjout(tmp)
                   }}
                 />
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Prenom</Form.Label>
+                <Form.Label>Bateau</Form.Label>
                 <Form.Control
-                  value={formAjout.prenom}
-                  type="prenom"
-                  placeholder="Philippe"
+                  value={formAjout.ship}
+                  type="text"
+                  placeholder="bateau de l'équipage"
                   required
                   onChange={(e) => {
                     let tmp = { ...formAjout }
-                    tmp.prenom = e.target.value
+                    tmp.ship = e.target.value
                     setFormAjout(tmp)
                   }}
                 />
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Age</Form.Label>
+                <Form.Label>Photo Bateau</Form.Label>
                 <Form.Control
-                  value={formAjout.age}
-                  type="number"
-                  placeholder="ex : 20"
+                  value={formAjout.picture}
+                  type="text"
+                  placeholder="photo boat"
                   required
                   onChange={(e) => {
                     let tmp = { ...formAjout }
-                    tmp.age = e.target.value
+                    tmp.picture = e.target.value
                     setFormAjout(tmp)
                   }}
                 />
