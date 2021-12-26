@@ -1,24 +1,15 @@
 import "../App.css"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import axios from "axios"
 
 import { Container, Row, Col, Button, Form } from "react-bootstrap"
 
 export default function AddCrew() {
   const [formAjout, setFormAjout] = useState({})
-  const [crews, setCrews] = useState([])
-
-  useEffect(() => {
-    axios.get("http://localhost:3010/crew").then((datas) => {
-      setCrews(datas.data)
-      console.log(datas.data)
-    })
-  }, [])
 
   function addCrew(event) {
     event.preventDefault()
     const { name, ship, picture } = { ...formAjout }
-    //alert(category)
     let url = `http://localhost:3010/crew`
 
     axios.post(url, {
