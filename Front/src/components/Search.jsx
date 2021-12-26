@@ -1,19 +1,18 @@
 import "../App.css"
-import { useState, useEffect } from "react"
-import axios from "axios"
-
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Container, Button, Form } from "react-bootstrap"
 
 export default function Search() {
   const [searchInput, setSearchInput] = useState("")
+  const navigate = useNavigate()
   function search(e) {
     e.preventDefault()
-
-    console.log("function search : ", searchInput)
+    navigate(`/searchParams/${searchInput}`)
   }
 
   return (
-    <div className="crew">
+    <div className="search">
       <Container>
         <Form onSubmit={(e) => search(e)}>
           <Form.Control
