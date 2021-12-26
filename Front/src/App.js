@@ -5,6 +5,7 @@ import AddCrew from "./components/AddCrew"
 import AddCharacter from "./components/AddCharacter"
 import Crew from "./components/Crew"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import SearchParams from "./components/SearchParams"
 
 export default function App() {
   return (
@@ -20,10 +21,21 @@ export default function App() {
               <Route exact path="/addCrew" element={<AddCrew />}></Route>
             </Route>
             <Route exact path="/AddCharacter">
-              <Route exact path="/AddCharacter" element={<AddCharacter />}></Route>
+              <Route
+                exact
+                path="/AddCharacter"
+                element={<AddCharacter />}
+              ></Route>
             </Route>
             <Route exact path="/crew/:id">
-              <Route exact path="/crew/:id" element={<Crew id=":1" />}></Route>
+              <Route exact path="/crew/:id" element={<Crew />}></Route>
+            </Route>
+            <Route exact path="/searchParams/:search">
+              <Route
+                exact
+                path="/searchParams/:search"
+                element={<SearchParams />}
+              ></Route>
             </Route>
           </Routes>
         </div>
