@@ -12,15 +12,21 @@ export default function Crew() {
   useEffect(() => {
     axios.get(`http://localhost:3010/crew/${id}`).then((datas) => {
       setCrew(datas.data)
+      setFormUpdate({
+        name: datas.data.name,
+        ship: datas.data.ship,
+        picture: datas.data.picture,
+      })
     })
   }, [id])
 
   function updateCrew(event) {
     event.preventDefault()
     const { name, ship, picture } = { ...formUpdate }
-    let url = `http://localhost:3010/crew/${id}`
-
-    axios.post(url, {
+    let url = `http://localhost:3010/updateCrew/${id}`
+    console.log(name, ship, picture)
+    axios.put(url, {
+      id,
       name,
       ship,
       picture,
@@ -44,7 +50,7 @@ export default function Crew() {
               placeholder="Nom de l'équipage"
               required
               onChange={(e) => {
-                let tmp = { ...formUpdate }
+                const tmp = { ...formUpdate }
                 tmp.name = e.target.value
                 setFormUpdate(tmp)
               }}
@@ -59,7 +65,7 @@ export default function Crew() {
               placeholder="bateau de l'équipage"
               required
               onChange={(e) => {
-                let tmp = { ...formUpdate }
+                const tmp = { ...formUpdate }
                 tmp.ship = e.target.value
                 setFormUpdate(tmp)
               }}
@@ -74,7 +80,7 @@ export default function Crew() {
               placeholder="photo boat"
               required
               onChange={(e) => {
-                let tmp = { ...formUpdate }
+                const tmp = { ...formUpdate }
                 tmp.picture = e.target.value
                 setFormUpdate(tmp)
               }}

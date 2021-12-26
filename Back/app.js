@@ -66,6 +66,16 @@ app.put("/crew/:id", async function (req, res) {
   res.status(201).json(datas);
 });
 
+app.put("/updateCrew/:id", async function (req, res) {
+  const { name, ship, picture } = req.body;
+  console.log(req.params.id);
+  const data = await crewModel.updateOne(
+    { _id: req.params.id },
+    { name, ship, picture }
+  );
+  res.status(201).json(data);
+});
+
 //delete a crew from the db
 app.delete("/crew/:id", async function (req, res) {
   const id = req.params.id;
