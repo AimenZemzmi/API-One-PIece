@@ -7,6 +7,7 @@ import { Container, Row, Col, Card } from "react-bootstrap"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import Search from "./Search"
 
 export default function Home() {
   const [crews, setCrews] = useState([])
@@ -19,6 +20,10 @@ export default function Home() {
 
   return (
     <div className="home">
+      <Container>
+        <Search />
+      </Container>
+
       <div className="equipage">
         <h2 style={{textAlign: "center"}}>Équipages</h2>   
         <div className="crews">

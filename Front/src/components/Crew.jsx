@@ -36,6 +36,11 @@ export default function Crew() {
     })
   }
 
+  async function deleteCrew() {
+    let url = `http://localhost:3010/crew/${id}`
+    await axios.delete(url)
+  }
+
   return (
     <div className="crew">
       <Container className="form">
@@ -90,6 +95,9 @@ export default function Crew() {
             <FontAwesomeIcon icon={faEdit} /> Modifier
           </button>
         </Form>
+        <Button variant="danger" onClick={deleteCrew} type="submit">
+          Supprimer
+        </Button>
       </Container>
     </div>
   )
