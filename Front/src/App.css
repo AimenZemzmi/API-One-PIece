@@ -1,0 +1,29 @@
+body {
+    background-image: url("components/images/background.jpg");
+  }
+
+  .form{
+    width:50%!important;
+    background-color:#C19A6B; 
+    border-radius:5px;
+    padding:10px; 
+    margin-top:30px;
+    filter: drop-shadow(0 0 0.75rem black);
+  }
+
+  .btn-form{
+      background-color: #ffc500;
+      border-radius: 5px;
+      border: none;
+      font-weight: bold;
+      padding: 5px;
+      margin: auto;
+  }
+
+  .add-crew{
+    background-color:#FF0000; 
+    padding:5px; 
+    border-radius:5px; 
+    color:white!important; 
+    font-weight:bold;
+  }
