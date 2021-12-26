@@ -2,7 +2,7 @@ body {
     background-image: url("components/images/background.jpg");
   }
 
-  .crews{
+  .crews, .pirates{
       display: flex;
       padding: 15px;
       flex-direction: row;
@@ -10,7 +10,7 @@ body {
       flex-wrap: wrap;
   }
 
-  .equipage{
+  .equipage, .pirate{
       background-color: #C19A6B;
       width: 100%!important;
       margin-top: 50px;

@@ -11,10 +11,18 @@ import Search from "./Search"
 
 export default function Home() {
   const [crews, setCrews] = useState([])
+  const [characters, setCharacters] = useState([])
+
 
   useEffect(() => {
     axios.get("http://localhost:3010/crew").then((datas) => {
       setCrews(datas.data)
+    })
+  }, [])
+
+  useEffect(() => {
+    axios.get("http://localhost:3010/character").then((datas) => {
+      setCharacters(datas.data)
     })
   }, [])
 
@@ -38,6 +46,24 @@ export default function Home() {
                 >
                   <FontAwesomeIcon icon={faEdit} /> Modifier
                 </Link>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      <div className="pirate">
+        <h2 style={{textAlign: "center"}}>Pirates</h2>   
+        <div className="pirates">
+          {characters.map((character, index) => (
+            <Card class="card" key={index} style={{width:"18rem", marginTop:"10px"}}>
+              {character.is_pirate == true ?
+                <h1>Wanted</h1>
+              : ""} 
+              <img class="card-img-top" src={character.picture} alt="Card image cap"/>
+              <div class="card-body">
+                <h5 class="card-title">{character.name}</h5>
+                <p class="card-text">Prime : <b>{character.bonus}</b></p>
               </div>
             </Card>
           ))}

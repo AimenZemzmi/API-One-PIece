@@ -97,4 +97,23 @@ app.post('/character', async function (req, res) {
   res.status(201).json({ id: datas['_id'] });
 });
 
+app.get("/character", async function (req, res) {
+  const datas = await characterModel.find({});
+
+  res.status(200).json(datas);
+});
+
+app.get("/character/:id", async function (req, res) {
+  const { id } = req.params;
+
+  if (isNaN(parseInt(id))) {
+    res.writeHead(400, { "Content-Type": "text/html" });
+    res.end("Wrong id format");
+    return null;
+  }
+  const datas = await characterModel.findById({ _id: id });
+
+  res.status(200).json(datas);
+});
+
 module.exports = app;
