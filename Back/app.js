@@ -34,7 +34,7 @@ app.get('/crew', async function (req, res) {
   res.status(200).json(datas);
 });
 
-app.get('/crew/:id', function (req, res) {
+app.get('/crew/:id', async function (req, res) {
   const { id } = req.params;
 
   if (isNaN(parseInt(id))) {
@@ -42,15 +42,9 @@ app.get('/crew/:id', function (req, res) {
     res.end('Wrong id format');
     return null;
   }
-  let selectCrew = crews.filter((crew) => crew.id === parseInt(id));
+  const datas = await crewModel.findById({ _id: id });
 
-  if (selectCrew.length === 0) {
-    res.writeHead(404, { 'Content-Type': 'text/html' });
-    res.end('No user found');
-    return null;
-  }
-
-  res.status(200).json(selectCrew[0]);
+  res.status(200).json(datas);
 });
 
 app.post('/crew', async function (req, res) {

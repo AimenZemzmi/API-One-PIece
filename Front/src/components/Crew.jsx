@@ -17,14 +17,14 @@ export default function Crew() {
 
   function updateCrew(event) {
     event.preventDefault()
-    //const { name, ship, picture } = { ...formUpdate }
-    // let url = `http://localhost:3010/crew`
+    const { name, ship, picture } = { ...formUpdate }
+    let url = `http://localhost:3010/crew/${id}`
 
-    // axios.post(url, {
-    //   name,
-    //   ship,
-    //   picture,
-    // })
+    axios.post(url, {
+      name,
+      ship,
+      picture,
+    })
   }
 
   return (
