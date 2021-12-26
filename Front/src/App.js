@@ -17,11 +17,13 @@ export default function App() {
   const [nbPic, setNbPic] = useState(1)
   const [produit, setProduit] = useState({})
   const [formAjout, setFormAjout] = useState({})
-  const [categs, setCategs] = useState([])
+  const [crews, setCrews] = useState([])
+  const [listCrews, setListCrews] = useState([])
 
   useEffect(() => {
-    axios.get("http://localhost:3010/category").then((datas) => {
-      setCategs(datas.data)
+    axios.get("http://localhost:3010/crew").then((datas) => {
+      setCrews(datas.data)
+      console.log(datas.data)
     })
   }, [])
 
@@ -47,14 +49,19 @@ export default function App() {
     axios.post(url, {
       name,
       ship,
-      picture
+      picture,
     })
+  }
+
+  function updateCrew(id) {
+    let url = `http://localhost:3010/crew/${id}`
+
+    axios.put(url, { _id: id, name: "updateName" })
   }
 
   return (
     <div className="App">
       <NavbarApp />
-
 
       <Container>
         <Row mt={5}>
@@ -62,8 +69,6 @@ export default function App() {
             <h1>Formulaire ajout équipage</h1>
             <hr />
             <Form onSubmit={(e) => addCrew(e)}>
-
-
               <Form.Group className="mb-3">
                 <Form.Label>Nom</Form.Label>
                 <Form.Control
@@ -114,6 +119,18 @@ export default function App() {
               </Button>
             </Form>
           </Col>
+        </Row>
+        <Row>
+          <ul>
+            {crews.map((crew) => (
+              <>
+                <li>{crew.name}</li>
+                <Button variant="info" onClick={() => updateCrew(crew._id)}>
+                  Enregistrer
+                </Button>
+              </>
+            ))}
+          </ul>
         </Row>
       </Container>
     </div>
