@@ -3,6 +3,8 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 
 import { Container, Row, Col, Button, Form } from "react-bootstrap"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 export default function AddCrew() {
   const [formAjout, setFormAjout] = useState({})
@@ -30,10 +32,10 @@ export default function AddCrew() {
 
   return (
     <div className="addCrew">
-      <Container>
+      <Container className="form">
         <Row mt={5}>
-          <Col md="6">
-            <h1>Formulaire ajout équipage</h1>
+          <Col md="12">
+            <h1 style={{textAlign: "center"}}>Ajouter un équipage</h1>
             <hr />
             <Form onSubmit={(e) => addCrew(e)}>
               <Form.Group className="mb-3">
@@ -81,9 +83,9 @@ export default function AddCrew() {
                 />
               </Form.Group>
 
-              <Button variant="info" type="submit">
-                Enregistrer
-              </Button>
+              <button className="btn-form" type="submit">
+              <FontAwesomeIcon icon={faPlus} /> Ajouter
+              </button>
             </Form>
           </Col>
         </Row>

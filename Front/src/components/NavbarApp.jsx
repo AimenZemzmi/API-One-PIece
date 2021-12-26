@@ -1,11 +1,15 @@
 import { Navbar, Container } from "react-bootstrap"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAnchor } from "@fortawesome/free-solid-svg-icons";
 
 export default function NavbarApp() {
   return (
-    <Navbar bg="primary" variant="dark">
+    <Navbar style={{backgroundColor:'#ffc500'}}>
       <Container>
-        <Navbar.Brand href="/">Home</Navbar.Brand>
-        <Navbar.Brand href="/addCrew">Ajout d'équipage</Navbar.Brand>
+        <Navbar.Brand href="/"><img src={ require('./images/one_piece.png').default} height={"50px"}/></Navbar.Brand>
+        <Navbar.Brand className="add-crew" href="/addCrew">
+          <FontAwesomeIcon icon={faAnchor} /> Ajouter un équipage
+        </Navbar.Brand>
       </Container>
     </Navbar>
   )
