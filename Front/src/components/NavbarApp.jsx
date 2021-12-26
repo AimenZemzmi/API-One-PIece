@@ -1,11 +1,12 @@
-import { Navbar, Container } from 'react-bootstrap';
+import { Navbar, Container } from "react-bootstrap"
 
-export default function NavbarApp(){
-    return(
-        <Navbar bg="primary" variant="dark">
-            <Container>
-                <Navbar.Brand href="#home">Application Initiation</Navbar.Brand>
-            </Container>
-        </Navbar>
-    )
+export default function NavbarApp() {
+  return (
+    <Navbar bg="primary" variant="dark">
+      <Container>
+        <Navbar.Brand href="/">Home</Navbar.Brand>
+        <Navbar.Brand href="/addCrew">Ajout d'équipage</Navbar.Brand>
+      </Container>
+    </Navbar>
+  )
 }
