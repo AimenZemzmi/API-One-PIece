@@ -3,7 +3,10 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Card } from "react-bootstrap"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   const [crews, setCrews] = useState([])
@@ -16,25 +19,28 @@ export default function Home() {
 
   return (
     <div className="home">
-      <Container>
-        <Row>
-          <Col>
-            <ul>
-              {crews.map((crew, index) => (
-                <li key={index}>
-                  <Link
-                    to={{
-                      pathname: `/crew/${crew._id}`,
-                    }}
-                  >
-                    {crew.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </Col>
-        </Row>
-      </Container>
+      <div className="equipage">
+        <h2 style={{textAlign: "center"}}>Équipages</h2>   
+        <div className="crews">
+          {crews.map((crew, index) => (
+            <Card class="card" key={index} >
+              <img class="card-img-top" src={crew.picture} alt="Card image cap"/>
+              <div class="card-body">
+                <h5 class="card-title">{crew.name}</h5>
+                <p class="card-text">Navire : <b>{crew.ship}</b></p>
+                <Link
+                  to={{
+                    pathname: `/crew/${crew._id}`,
+                  }}
+                  className="btn-form"
+                >
+                  <FontAwesomeIcon icon={faEdit} /> Modifier
+                </Link>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

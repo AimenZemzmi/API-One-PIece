@@ -2,6 +2,21 @@ body {
     background-image: url("components/images/background.jpg");
   }
 
+  .crews{
+      display: flex;
+      padding: 15px;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+  }
+
+  .equipage{
+      background-color: #C19A6B;
+      width: 100%!important;
+      margin-top: 50px;
+      filter: drop-shadow(0 0 0.75rem black);
+  }
+
   .form{
     width:50%!important;
     background-color:#C19A6B; 
@@ -18,6 +33,8 @@ body {
       font-weight: bold;
       padding: 5px;
       margin: auto;
+      color: black!important;
+      text-decoration: none;
   }
 
   .add-crew{
