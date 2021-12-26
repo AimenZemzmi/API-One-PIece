@@ -34,7 +34,7 @@ app.get('/crew', async function (req, res) {
   res.status(200).json(datas);
 });
 
-app.get('/crew/:id', function (req, res) {
+app.get('/crew/:id', async function (req, res) {
   const { id } = req.params;
 
   if (isNaN(parseInt(id))) {
@@ -42,15 +42,9 @@ app.get('/crew/:id', function (req, res) {
     res.end('Wrong id format');
     return null;
   }
-  let selectCrew = crews.filter((crew) => crew.id === parseInt(id));
+  const datas = await crewModel.findById({ _id: id });
 
-  if (selectCrew.length === 0) {
-    res.writeHead(404, { 'Content-Type': 'text/html' });
-    res.end('No user found');
-    return null;
-  }
-
-  res.status(200).json(selectCrew[0]);
+  res.status(200).json(datas);
 });
 
 app.post('/crew', async function (req, res) {
@@ -64,12 +58,10 @@ app.post('/crew', async function (req, res) {
   res.status(201).json({ id: datas['_id'] });
 });
 
-app.put('/crew/:id', async function (req, res) {
-  // La modification d'un utilisateur
-  const { _id, name } = req.params;
-
-  const datas = await crewModel.findOneAndUpdate({ _id }, { name });
-  res.status(201).json(datas);
+app.put('/updateCrew/:id', async function (req, res) {
+  const { id, name, ship, picture } = req.body;
+  const data = await crewModel.updateOne({ _id: id }, { name, ship, picture });
+  res.status(201).json(data);
 });
 
 app.delete('/user/:id', async function (req, res) {
