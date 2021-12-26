@@ -4,6 +4,9 @@ import axios from "axios"
 
 import { Container, Row, Col, Button, Form } from "react-bootstrap"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+
 export default function AddCrew() {
   const [formAjout, setFormAjout] = useState({})
   const [crews, setCrew] = useState([])
@@ -50,10 +53,10 @@ export default function AddCrew() {
 /*{options.getCrew(({ value, label }, index) => <option value={value} >{label}</option>)}*/
   return (
     <div className="addCharacter">
-      <Container>
+      <Container className="form">
         <Row mt={5}>
-          <Col md="6">
-            <h1>Formulaire ajout équipage</h1>
+          <Col md="12">
+            <h1 style={{textAlign:"center"}}>Ajouter un pirate</h1>
             <hr />
             <Form onSubmit={(e) => addCharacter(e)}>
               <Form.Group className="mb-3">
@@ -87,7 +90,7 @@ export default function AddCrew() {
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>Photo Pirates</Form.Label>
+                <Form.Label>Image</Form.Label>
                 <Form.Control
                   value={formAjout.picture}
                   type="text"
@@ -102,7 +105,7 @@ export default function AddCrew() {
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>recherché</Form.Label>
+                <Form.Label>Recherché ?</Form.Label>
                 <Form.Check
                   value="1"
                   type="checkbox"
@@ -115,7 +118,7 @@ export default function AddCrew() {
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>équipage du prirates</Form.Label>
+                <Form.Label>Équipage</Form.Label>
                   <Form.Control as="select" > 
                   value={formAjout.crew}
                   onChange={(e) => {
@@ -132,9 +135,9 @@ export default function AddCrew() {
                 
               </Form.Group>
 
-              <Button variant="info" type="submit">
-                Enregistrer
-              </Button>
+              <button className="btn-form" type="submit">
+                <FontAwesomeIcon icon={faPlus} /> Ajouter
+              </button>
             </Form>
           </Col>
         </Row>

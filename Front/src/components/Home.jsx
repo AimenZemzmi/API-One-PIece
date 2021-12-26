@@ -20,9 +20,6 @@ export default function Home() {
 
   return (
     <div className="home">
-      <Container>
-        <Search />
-      </Container>
 
       <div className="equipage">
         <h2 style={{textAlign: "center"}}>Équipages</h2>   

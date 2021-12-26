@@ -44,3 +44,11 @@ body {
     color:white!important; 
     font-weight:bold;
   }
+
+  .add-pirate{
+    background-color:#FF4500; 
+    padding:5px; 
+    border-radius:5px; 
+    color:white!important; 
+    font-weight:bold;  
+  }

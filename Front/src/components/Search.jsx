@@ -16,14 +16,16 @@ export default function Search() {
     <div className="crew">
       <Container>
         <Form onSubmit={(e) => search(e)}>
-          <Form.Control
-            placeholder="Recherche d'équipe ou de pirate"
-            type="text"
-            onChange={(e) => {
-              setSearchInput(e.target.value)
-            }}
-          />
-          <Button type="submit">Rechercher</Button>
+          <div style={{display:"flex"}}>
+            <Form.Control
+              placeholder="Recherche d'équipage ou de pirate"
+              type="text"
+              onChange={(e) => {
+                setSearchInput(e.target.value)
+              }}
+            />
+            <Button type="submit">Rechercher</Button>
+          </div>
         </Form>
       </Container>
     </div>
