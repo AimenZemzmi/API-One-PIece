@@ -4,6 +4,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 
 import { Container, Row, Col } from "react-bootstrap"
+import Search from "./Search"
 
 export default function Home() {
   const [crews, setCrews] = useState([])
@@ -16,6 +17,9 @@ export default function Home() {
 
   return (
     <div className="home">
+      <Container>
+        <Search />
+      </Container>
       <Container>
         <Row>
           <Col>
