@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const crewModel = require('./schemas/Crew');
+const characterModel = require('./schemas/Character');
 const bodyParser = require('body-parser');
 const categoryModel = require('./schemas/category');
 const { apiKey } = require('./package.json');
@@ -74,6 +75,19 @@ app.put('/crew/:id', async function (req, res) {
 
 app.delete('/user/:id', async function (req, res) {
   // La suppression
+});
+
+app.post('/character', async function (req, res) {
+  const { name, bonus, picture, is_pirate, crew } = req.body;
+
+  const datas = await characterModel.create({
+    name,
+    bonus,
+    picture,
+    is_pirate,
+    crew,
+  });
+  res.status(201).json({ id: datas['_id'] });
 });
 
 module.exports = app;

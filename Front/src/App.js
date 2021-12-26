@@ -2,6 +2,7 @@ import "./App.css"
 import NavbarApp from "./components/NavbarApp"
 import Home from "./components/Home"
 import AddCrew from "./components/AddCrew"
+import AddCharacter from "./components/AddCharacter"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 export default function App() {
@@ -16,6 +17,9 @@ export default function App() {
             </Route>
             <Route exact path="/addCrew">
               <Route exact path="/addCrew" element={<AddCrew />}></Route>
+            </Route>
+            <Route exact path="/AddCharacter">
+              <Route exact path="/AddCharacter" element={<AddCharacter />}></Route>
             </Route>
           </Routes>
         </div>
