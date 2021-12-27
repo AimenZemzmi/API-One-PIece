@@ -109,7 +109,6 @@ export default function AddCrew() {
                 <Form.Check
                   value={formAjout.is_pirate}
                   type="checkbox"
-                  required
                   onChange={(e) => {
                     let tmp = { ...formAjout }
                     tmp.is_pirate = e.target.value

@@ -75,6 +75,19 @@ export default function Home() {
                 <p className="card-text">
                   Prime : <b>{character.bonus}</b>
                 </p>
+                <p className="card-text">
+                  Equipage : <b> {crews.map((crew, index) => (
+                    character.crew == crew._id ? crew.name : ""
+                  ))}</b>
+                </p>
+                <Link
+                  to={{
+                    pathname: `/character/${character._id}`,
+                  }}
+                  className="btn-form"
+                >
+                  <FontAwesomeIcon icon={faEdit} /> Modifier
+                </Link>
               </div>
             </Card>
           ))}
