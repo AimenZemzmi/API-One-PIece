@@ -34,7 +34,7 @@ export default function Home() {
               <img
                 className="card-img-top"
                 src={crew.picture}
-                alt="Card image cap"
+                alt="Card_image_cap"
               />
               <div className="card-body">
                 <h5 className="card-title">{crew.name}</h5>
@@ -68,7 +68,7 @@ export default function Home() {
               <img
                 className="card-img-top"
                 src={character.picture}
-                alt="Card image cap"
+                alt="Card_image_cap"
               />
               <div className="card-body">
                 <h5 className="card-title">{character.name}</h5>
@@ -76,13 +76,9 @@ export default function Home() {
                   Prime : <b>{character.bonus}</b>
                 </p>
                 <p className="card-text">
-                  Equipage :{" "}
-                  <b>
-                    {" "}
-                    {crews.map((crew, index) =>
-                      character.crew == crew._id ? crew.name : ""
-                    )}
-                  </b>
+                  Equipage : <b> {crews.map((crew, index) => (
+                    character.crew == crew._id ? crew.name : ""
+                  ))}</b>
                 </p>
                 <Link
                   to={{

@@ -17,6 +17,7 @@ export default function NavbarApp() {
           <img
             src={require("./images/one_piece.png").default}
             height={"50px"}
+            alt="Card_image_cap"
           />
         </Navbar.Brand>
 
