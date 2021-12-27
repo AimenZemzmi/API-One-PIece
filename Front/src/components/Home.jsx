@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-import { Container, Card } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
@@ -36,7 +36,7 @@ export default function Home() {
               <img
                 className="card-img-top"
                 src={crew.picture}
-                alt="Card image cap"
+                alt="Card_image_cap"
               />
               <div className="card-body">
                 <h5 className="card-title">{crew.name}</h5>
@@ -70,7 +70,7 @@ export default function Home() {
               <img
                 className="card-img-top"
                 src={character.picture}
-                alt="Card image cap"
+                alt="Card_image_cap"
               />
               <div className="card-body">
                 <h5 className="card-title">{character.name}</h5>

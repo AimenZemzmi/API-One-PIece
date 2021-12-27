@@ -2,9 +2,9 @@ import "../App.css"
 import { useState } from "react"
 import axios from "axios"
 
-import { Container, Row, Col, Button, Form } from "react-bootstrap"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { Container, Row, Col, Form } from "react-bootstrap"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 export default function AddCrew() {
   const [formAjout, setFormAjout] = useState({})
@@ -19,6 +19,10 @@ export default function AddCrew() {
       ship,
       picture,
     })
+
+    setTimeout(() => {
+      window.location.href = `http://localhost:3000/`
+    }, 1000)
   }
 
   return (
@@ -26,7 +30,7 @@ export default function AddCrew() {
       <Container className="form">
         <Row mt={5}>
           <Col md="12">
-            <h1 style={{textAlign: "center"}}>Ajouter un équipage</h1>
+            <h1 style={{ textAlign: "center" }}>Ajouter un équipage</h1>
             <hr />
             <Form onSubmit={(e) => addCrew(e)}>
               <Form.Group className="mb-3">
@@ -61,21 +65,22 @@ export default function AddCrew() {
 
               <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Photo</Form.Label>
-                <Form.Control 
-                value={formAjout.picture}
-                type="file" 
-                placeholder="photo boat"
-                required
-                onChange={(e) => {
-                  //let tmp = { ...formAjout }
-                  //tmp.picture = e.target.files
-                  //setFormAjout(tmp)
-                  console.log(e.target.files)
-                }}/>
+                <Form.Control
+                  value={formAjout.picture}
+                  type="file"
+                  placeholder="photo boat"
+                  required
+                  onChange={(e) => {
+                    //let tmp = { ...formAjout }
+                    //tmp.picture = e.target.files
+                    //setFormAjout(tmp)
+                    console.log(e.target.files)
+                  }}
+                />
               </Form.Group>
 
               <button className="btn-form" type="submit">
-              <FontAwesomeIcon icon={faPlus} /> Ajouter
+                <FontAwesomeIcon icon={faPlus} /> Ajouter
               </button>
             </Form>
           </Col>

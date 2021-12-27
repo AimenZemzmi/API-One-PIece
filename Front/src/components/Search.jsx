@@ -6,7 +6,7 @@ export default function Search() {
   const [searchInput, setSearchInput] = useState("")
   function search(e) {
     e.preventDefault()
-    window.location.href = `http://localhost:3000/searchParams/${searchInput}`;
+    window.location.href = `http://localhost:3000/searchParams/${searchInput}`
   }
 
   return (
