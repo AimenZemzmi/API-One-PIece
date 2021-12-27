@@ -84,6 +84,19 @@ app.delete("/crew/:id", async function (req, res) {
   await crewModel.deleteOne({ _id: id });
 });
 
+app.get("/character/:id", async function (req, res) {
+  const { id } = req.params;
+
+  if (isNaN(parseInt(id))) {
+    res.writeHead(400, { "Content-Type": "text/html" });
+    res.end("Wrong id format");
+    return null;
+  }
+  const datas = await characterModel.findById({ _id: id });
+
+  res.status(200).json(datas);
+});
+
 app.post('/character', async function (req, res) {
   const { name, bonus, picture, is_pirate, crew } = req.body;
 
@@ -95,6 +108,23 @@ app.post('/character', async function (req, res) {
     crew,
   });
   res.status(201).json({ id: datas['_id'] });
+});
+
+app.put("/character/:id", async function (req, res) {
+  const { name, bonus, picture, is_pirate, crew } = req.body;
+  console.log(req.params.id);
+  const data = await characterModel.updateOne(
+    { _id: req.params.id },
+    { name, bonus, picture, is_pirate, crew }
+  );
+  res.status(201).json(data);
+}); 
+
+//delete a crew from the db
+app.delete("/character/:id", async function (req, res) {
+  const id = req.params.id;
+  console.log(id);
+  await characterModel.deleteOne({ _id: id });
 });
 
 module.exports = app;

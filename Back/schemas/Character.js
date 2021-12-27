@@ -13,9 +13,9 @@ const CharacterSchema = mongoose.Schema({
   is_pirate: {
     type: Boolean,
     required: '{PATH} is required!',
-    default: true,
+    default: false,
   },
-  crew: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Crew' }],
+  crew: { type: mongoose.Schema.Types.ObjectId, ref: 'Crew' },
 });
 
 module.exports = mongoose.model('Character', CharacterSchema);

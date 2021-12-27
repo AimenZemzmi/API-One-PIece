@@ -20,21 +20,21 @@ export default function AddCrew() {
     event.preventDefault()
     const { name, bonus, picture, is_pirate, crew} = { ...formAjout }
     //alert(category)
-    let url = `http://localhost:3010/character`
+    let url = "http://localhost:3010/character"
 
     console.log(is_pirate);
-    
-    var is_pirate_val = 0;
+
+    var is_pirate_val = false;
 
     if(is_pirate == "1"){
-      is_pirate_val = 1
+      is_pirate_val = true
     }
 
     axios.post(url, {
       name,
       bonus,
       picture,
-      is_pirate_val,
+      is_pirate: is_pirate_val,
       crew,
     })
   }
@@ -74,7 +74,7 @@ export default function AddCrew() {
               <Form.Group className="mb-3">
                 <Form.Label>Prime</Form.Label>
                 <Form.Control
-                  value={formAjout.ship}
+                  value={formAjout.bonus}
                   type="text"
                   placeholder="prime du pirate"
                   required
@@ -104,8 +104,9 @@ export default function AddCrew() {
               <Form.Group className="mb-3">
                 <Form.Label>recherché</Form.Label>
                 <Form.Check
-                  value="1"
+                  value={formAjout.is_pirate}
                   type="checkbox"
+                  required
                   onChange={(e) => {
                     let tmp = { ...formAjout }
                     tmp.is_pirate = e.target.value
@@ -115,21 +116,23 @@ export default function AddCrew() {
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label>équipage du prirates</Form.Label>
-                  <Form.Control as="select" > 
-                  value={formAjout.crew}
+                <Form.Label>Équipage</Form.Label>
+                  <Form.Control as="select"
                   onChange={(e) => {
-                    let tmp = { ...formAjout }
-                    tmp.crew = e.target.value
-                    setFormAjout(tmp)
-                  }}
+                      console.log(e.target.value);
+                      let tmp = { ...formAjout }
+                      tmp.crew = e.target.value
+                      setFormAjout(tmp)
+                    }}
+                  >
+                  <option value= "INDEFINI"> INDEFINI </option>
                   {crews.map((crew, index) => (
-                    <option value={crew._id}>
-                        {crew.name}
+                    <option key={index}
+                    value={crew._id}>
+                      {crew.name}
                     </option>
-                    ))}
+                  ))}
                   </Form.Control>
-                
               </Form.Group>
 
               <Button variant="info" type="submit">

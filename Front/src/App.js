@@ -4,6 +4,7 @@ import Home from "./components/Home"
 import AddCrew from "./components/AddCrew"
 import AddCharacter from "./components/AddCharacter"
 import Crew from "./components/Crew"
+import Character from "./components/Character"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 export default function App() {
@@ -24,6 +25,9 @@ export default function App() {
             </Route>
             <Route exact path="/crew/:id">
               <Route exact path="/crew/:id" element={<Crew id=":1" />}></Route>
+            </Route>
+            <Route exact path="/character/:id">
+              <Route exact path="/character/:id" element={<Character id=":1" />}></Route>
             </Route>
           </Routes>
         </div>
