@@ -25,13 +25,13 @@ Si vous souhaitez mettre votre propre base mongo vous le pouvez sinon veuillez l
 
 Nous avons réalisé le projet avec :
 
-    La création, la modification, l'affichage et la supression d'un équipage.
-    La création, la modification, l'affichage et la supression d'un pirate.
-    Une relation entre pirate et crew.
+- La création, la modification, l'affichage et la supression d'un équipage.
+- La création, la modification, l'affichage et la supression d'un pirate.
+- Une relation entre pirate et crew.
 
-    Nous avons aussi commencé à faire un système pour l'ajout d'image mais nous n'avons pas eu le temps de le terminer. Nous voulions ajouter une photo pour le pirate mais aussi pour les équipages. Il subsiste un petit exemple dans le formulaire de création d'équipage (crew). On peut upload un fichier et un console.log est effectué pour voir les data du fichier.
-    Mais du coup nous avons laissé le moyen pour afficher des images avec des liens de fichier déja sur internet.
-    Sinon nous aurions souhaité récupérer le fichier l'upload dans un répertoire adéquat en changent le nom de ce dernier, ce nom aurait été injecter en BDD pour l'afficher pus tard.
+Nous avons aussi commencé à faire un système pour l'ajout d'image mais nous n'avons pas eu le temps de le terminer. Nous voulions ajouter une photo pour le pirate mais aussi pour les équipages. Il subsiste un petit exemple dans le formulaire de création d'équipage (crew). On peut upload un fichier et un console.log est effectué pour voir les data du fichier.
+Mais du coup nous avons laissé le moyen pour afficher des images avec des liens de fichier déja sur internet.
+Sinon nous aurions souhaité récupérer le fichier l'upload dans un répertoire adéquat en changent le nom de ce dernier, ce nom aurait été injecter en BDD pour l'afficher pus tard.
 
 Cordialement,
 Rodolphe de SCORRAILLE,
