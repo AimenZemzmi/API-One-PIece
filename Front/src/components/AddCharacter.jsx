@@ -2,34 +2,25 @@ import "../App.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-import { Container, Row, Col, Button, Form } from "react-bootstrap"
+import { Container, Row, Col, Form } from "react-bootstrap"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 export default function AddCrew() {
   const [formAjout, setFormAjout] = useState({})
   const [crews, setCrew] = useState([])
-/*
-  useEffect(() => {
-    axios.get("http://localhost:3010/character").then((datas) => {
-      setCrews(datas.data)
-      console.log(datas.data)
-    })
-  }, [])
-  */
 
   function addCharacter(event) {
     event.preventDefault()
-    const { name, bonus, picture, is_pirate, crew} = { ...formAjout }
-    //alert(category)
+    const { name, bonus, picture, is_pirate, crew } = { ...formAjout }
     let url = "http://localhost:3010/character"
 
-    console.log(is_pirate);
+    console.log(is_pirate)
 
-    var is_pirate_val = false;
+    var is_pirate_val = false
 
-    if(is_pirate == "1"){
+    if (is_pirate == "1") {
       is_pirate_val = true
     }
 
@@ -40,6 +31,10 @@ export default function AddCrew() {
       is_pirate: is_pirate_val,
       crew,
     })
+
+    setTimeout(() => {
+      window.location.href = `http://localhost:3000/`
+    }, 1000)
   }
 
   useEffect(() => {
@@ -50,13 +45,12 @@ export default function AddCrew() {
 
   console.log(crews)
 
-/*{options.getCrew(({ value, label }, index) => <option value={value} >{label}</option>)}*/
   return (
     <div className="addCharacter">
       <Container className="form">
         <Row mt={5}>
           <Col md="12">
-            <h1 style={{textAlign:"center"}}>Ajouter un pirate</h1>
+            <h1 style={{ textAlign: "center" }}>Ajouter un pirate</h1>
             <hr />
             <Form onSubmit={(e) => addCharacter(e)}>
               <Form.Group className="mb-3">
@@ -119,22 +113,22 @@ export default function AddCrew() {
 
               <Form.Group className="mb-3">
                 <Form.Label>Équipage</Form.Label>
-                  <Form.Control as="select"
+                <Form.Control
+                  as="select"
                   onChange={(e) => {
-                      console.log(e.target.value);
-                      let tmp = { ...formAjout }
-                      tmp.crew = e.target.value
-                      setFormAjout(tmp)
-                    }}
-                  >
-                  <option value= "INDEFINI"> INDEFINI </option>
+                    console.log(e.target.value)
+                    let tmp = { ...formAjout }
+                    tmp.crew = e.target.value
+                    setFormAjout(tmp)
+                  }}
+                >
+                  <option value="INDEFINI"> INDEFINI </option>
                   {crews.map((crew, index) => (
-                    <option key={index}
-                    value={crew._id}>
+                    <option key={index} value={crew._id}>
                       {crew.name}
                     </option>
                   ))}
-                  </Form.Control>
+                </Form.Control>
               </Form.Group>
 
               <button className="btn-form" type="submit">

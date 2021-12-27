@@ -2,7 +2,7 @@ import "../App.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 
-import { Container, Button, Form } from "react-bootstrap"
+import { Container, Form } from "react-bootstrap"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
@@ -35,11 +35,17 @@ export default function Crew() {
       ship,
       picture,
     })
+    setTimeout(() => {
+      window.location.href = `http://localhost:3000/`
+    }, 1000)
   }
 
   async function deleteCrew() {
     let url = `http://localhost:3010/crew/${id}`
     await axios.delete(url)
+    setTimeout(() => {
+      window.location.href = `http://localhost:3000/`
+    }, 1000)
   }
 
   return (
@@ -90,7 +96,7 @@ export default function Crew() {
               }}
             />
           </Form.Group>
-          
+
           <div>
             <button className="btn-form" type="submit">
               <FontAwesomeIcon icon={faEdit} /> Modifier
@@ -100,7 +106,6 @@ export default function Crew() {
             </button>
           </div>
         </Form>
-        
       </Container>
     </div>
   )

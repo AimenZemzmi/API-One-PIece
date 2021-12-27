@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
 
-import { Container, Card } from "react-bootstrap"
+import { Card } from "react-bootstrap"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
@@ -76,9 +76,13 @@ export default function Home() {
                   Prime : <b>{character.bonus}</b>
                 </p>
                 <p className="card-text">
-                  Equipage : <b> {crews.map((crew, index) => (
-                    character.crew == crew._id ? crew.name : ""
-                  ))}</b>
+                  Equipage :{" "}
+                  <b>
+                    {" "}
+                    {crews.map((crew, index) =>
+                      character.crew == crew._id ? crew.name : ""
+                    )}
+                  </b>
                 </p>
                 <Link
                   to={{

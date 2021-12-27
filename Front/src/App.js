@@ -39,7 +39,11 @@ export default function App() {
               ></Route>
             </Route>
             <Route exact path="/character/:id">
-              <Route exact path="/character/:id" element={<Character id=":1" />}></Route>
+              <Route
+                exact
+                path="/character/:id"
+                element={<Character id=":1" />}
+              ></Route>
             </Route>
           </Routes>
         </div>

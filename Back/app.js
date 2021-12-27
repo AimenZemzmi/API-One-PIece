@@ -5,9 +5,7 @@ const mongoose = require('mongoose');
 const crewModel = require('./schemas/Crew');
 const characterModel = require('./schemas/Character');
 const bodyParser = require('body-parser');
-const categoryModel = require('./schemas/category');
-const { apiKey } = require('./package.json');
-const jwtLib = require('jsonwebtoken');
+//const jwtLib = require('jsonwebtoken');
 let db;
 
 try {
@@ -18,7 +16,7 @@ try {
 } catch (e) {
   throw new Error('Database error');
 }
-const { jwtSecret } = require('./package.json');
+//const { jwtSecret } = require('./package.json');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -77,19 +75,18 @@ app.put('/updateCrew/:id', async function (req, res) {
   res.status(201).json(data);
 });
 
-//delete a crew from the db
 app.delete('/crew/:id', async function (req, res) {
   const id = req.params.id;
   console.log(id);
   await crewModel.deleteOne({ _id: id });
 });
 
-app.get("/character/:id", async function (req, res) {
+app.get('/character/:id', async function (req, res) {
   const { id } = req.params;
 
   if (isNaN(parseInt(id))) {
-    res.writeHead(400, { "Content-Type": "text/html" });
-    res.end("Wrong id format");
+    res.writeHead(400, { 'Content-Type': 'text/html' });
+    res.end('Wrong id format');
     return null;
   }
   const datas = await characterModel.findById({ _id: id });
@@ -110,7 +107,7 @@ app.post('/character', async function (req, res) {
   res.status(201).json({ id: datas['_id'] });
 });
 
-app.put("/character/:id", async function (req, res) {
+app.put('/character/:id', async function (req, res) {
   const { name, bonus, picture, is_pirate, crew } = req.body;
   console.log(req.params.id);
   const data = await characterModel.updateOne(
@@ -118,27 +115,26 @@ app.put("/character/:id", async function (req, res) {
     { name, bonus, picture, is_pirate, crew }
   );
   res.status(201).json(data);
-}); 
+});
 
-//delete a crew from the db
-app.delete("/character/:id", async function (req, res) {
+app.delete('/character/:id', async function (req, res) {
   const id = req.params.id;
   console.log(id);
   await characterModel.deleteOne({ _id: id });
 });
 
-app.get("/character", async function (req, res) {
+app.get('/character', async function (req, res) {
   const datas = await characterModel.find({});
 
   res.status(200).json(datas);
 });
 
-app.get("/character/:id", async function (req, res) {
+app.get('/character/:id', async function (req, res) {
   const { id } = req.params;
 
   if (isNaN(parseInt(id))) {
-    res.writeHead(400, { "Content-Type": "text/html" });
-    res.end("Wrong id format");
+    res.writeHead(400, { 'Content-Type': 'text/html' });
+    res.end('Wrong id format');
     return null;
   }
   const datas = await characterModel.findById({ _id: id });
@@ -161,6 +157,5 @@ app.get('/search', async function (req, res) {
 
   res.status(200).json(datas);
 });
-
 
 module.exports = app;
