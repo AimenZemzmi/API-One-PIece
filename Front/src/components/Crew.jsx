@@ -88,7 +88,6 @@ export default function Crew() {
               defaultValue={crew.picture}
               type="text"
               placeholder="photo boat"
-              required
               onChange={(e) => {
                 const tmp = { ...formUpdate }
                 tmp.picture = e.target.value
