@@ -94,7 +94,7 @@ export default function AddCrew() {
                 <Form.Control
                   value={formAjout.picture}
                   type="text"
-                  placeholder="photo boat"
+                  placeholder="photo pirate"
                   required
                   onChange={(e) => {
                     let tmp = { ...formAjout }
