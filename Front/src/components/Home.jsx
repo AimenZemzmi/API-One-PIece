@@ -15,12 +15,14 @@ export default function Home() {
   useEffect(() => {
     axios.get("http://localhost:3010/crew").then((datas) => {
       setCrews(datas.data)
+      console.log(datas.data)
     })
   }, [])
 
   useEffect(() => {
     axios.get("http://localhost:3010/character").then((datas) => {
       setCharacters(datas.data)
+      console.log(datas.data)
     })
   }, [])
 
@@ -30,7 +32,7 @@ export default function Home() {
         <h2 style={{ textAlign: "center" }}>Équipages</h2>
         <div className="crews">
           {crews.map((crew, index) => (
-            <Card className="card" key={index}>
+            <Card className="card" key={index} style={{ width: "18rem", marginTop: "10px" }}>
               <img
                 className="card-img-top"
                 src={crew.picture}
@@ -73,7 +75,7 @@ export default function Home() {
               <div className="card-body">
                 <h5 className="card-title">{character.name}</h5>
                 <p className="card-text">
-                  Prime : <b>{character.bonus}</b>
+                  Prime : <b>{character.bonus} Berry</b>
                 </p>
                 <p className="card-text">
                   Equipage : <b> {crews.map((crew, index) => (

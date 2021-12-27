@@ -6,6 +6,7 @@ import { Container, Button, Form } from "react-bootstrap"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 export default function Character() {
   const [id] = useState(window.location.pathname.split("/")[2])
@@ -62,7 +63,7 @@ export default function Character() {
 
   return (
     <div className="addCharacter">
-      <Container>
+      <Container className="form">
             <h1>Formulaire de modification d'équipage</h1>
             <hr />
             <Form onSubmit={(e) => updateCharacter(e)}>
@@ -164,14 +165,15 @@ export default function Character() {
                   ))}
                   </Form.Control>
               </Form.Group>
-
+              <div>
                 <button className="btn-form" type="submit">
                   <FontAwesomeIcon icon={faEdit} /> Modifier
                 </button>
-              </Form>
-              <Button variant="danger" onClick={deleteCharacter} type="submit">
-                Supprimer
-              </Button>
+                <button className="btn-delete" onClick={deleteCharacter} type="submit">
+                  <FontAwesomeIcon icon={faTrash} /> Supprimer
+                </button>
+              </div>
+          </Form>
       </Container>
     </div>
   )

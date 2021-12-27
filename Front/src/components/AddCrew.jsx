@@ -74,21 +74,6 @@ export default function AddCrew() {
                 }}/>
               </Form.Group>
 
-              {/* <Form.Group className="mb-3">
-                <Form.Label>Photo Bateau</Form.Label>
-                <Form.Control
-                  value={formAjout.picture}
-                  type="text"
-                  placeholder="photo boat"
-                  required
-                  onChange={(e) => {
-                    let tmp = { ...formAjout }
-                    tmp.picture = e.target.value
-                    setFormAjout(tmp)
-                  }}
-                />
-              </Form.Group> */}
-
               <button className="btn-form" type="submit">
               <FontAwesomeIcon icon={faPlus} /> Ajouter
               </button>

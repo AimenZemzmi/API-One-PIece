@@ -2,7 +2,10 @@ import "../App.css"
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { Container } from "react-bootstrap"
+import { Container, Card } from "react-bootstrap"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
 
 export default function SearchParams() {
   const [searchInput] = useState(window.location.pathname.split("/")[2])
@@ -18,45 +21,78 @@ export default function SearchParams() {
   }, [searchInput])
 
   return (
-    <div className="crew">
-      <Container>
-        <p>Équipages :</p>
-        <ul>
+    <div className="home">
+      <div className="equipage">
+        <h2 style={{ textAlign: "center" }}>Équipages</h2>
+        <div className="crews">
           {Array.from(crews, (crew, index) => {
             return (
-              <div key={index}>
+              <Card className="card" key={index} style={{ width: "18rem", marginTop: "10px" }}>
+              <img
+                className="card-img-top"
+                src={crew.picture}
+                alt="Card image cap"
+              />
+              <div className="card-body">
+                <h5 className="card-title">{crew.name}</h5>
+                <p className="card-text">
+                  Navire : <b>{crew.ship}</b>
+                </p>
                 <Link
                   to={{
                     pathname: `/crew/${crew._id}`,
                   }}
                   className="btn-form"
                 >
-                  {crew.name}
+                  <FontAwesomeIcon icon={faEdit} /> Modifier
                 </Link>
               </div>
+            </Card>
             )
           })}
-        </ul>
-      </Container>
-      <Container>
-        <p>Pirates :</p>
-        <ul>
+          
+        </div>
+      </div>
+      <div className="pirate">
+        <h2 style={{ textAlign: "center" }}>Pirates</h2>
+        <div className="pirates">
           {Array.from(characters, (character, index) => {
             return (
-              <div key={index}>
+              <Card
+              className="card"
+              key={index}
+              style={{ width: "18rem", marginTop: "10px" }}
+            >
+              {character.is_pirate == true ? <h1>Wanted</h1> : ""}
+              <img
+                className="card-img-top"
+                src={character.picture}
+                alt="Card image cap"
+              />
+              <div className="card-body">
+                <h5 className="card-title">{character.name}</h5>
+                <p className="card-text">
+                  Prime : <b>{character.bonus} Berry</b>
+                </p>
+                <p className="card-text">
+                  Equipage : <b> {crews.map((crew, index) => (
+                    character.crew == crew._id ? crew.name : ""
+                  ))}</b>
+                </p>
                 <Link
                   to={{
                     pathname: `/character/${character._id}`,
                   }}
                   className="btn-form"
                 >
-                  {character.name}
+                  <FontAwesomeIcon icon={faEdit} /> Modifier
                 </Link>
               </div>
+            </Card>
             )
           })}
-        </ul>
-      </Container>
+        </div>
+      </div>
     </div>
   )
 }
