@@ -59,7 +59,22 @@ export default function AddCrew() {
                 />
               </Form.Group>
 
-              <Form.Group className="mb-3">
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Photo</Form.Label>
+                <Form.Control 
+                value={formAjout.picture}
+                type="file" 
+                placeholder="photo boat"
+                required
+                onChange={(e) => {
+                  //let tmp = { ...formAjout }
+                  //tmp.picture = e.target.files
+                  //setFormAjout(tmp)
+                  console.log(e.target.files)
+                }}/>
+              </Form.Group>
+
+              {/* <Form.Group className="mb-3">
                 <Form.Label>Photo Bateau</Form.Label>
                 <Form.Control
                   value={formAjout.picture}
@@ -72,7 +87,7 @@ export default function AddCrew() {
                     setFormAjout(tmp)
                   }}
                 />
-              </Form.Group>
+              </Form.Group> */}
 
               <button className="btn-form" type="submit">
               <FontAwesomeIcon icon={faPlus} /> Ajouter

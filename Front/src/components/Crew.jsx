@@ -4,8 +4,9 @@ import axios from "axios"
 
 import { Container, Button, Form } from "react-bootstrap"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
+import { faTrash } from "@fortawesome/free-solid-svg-icons"
 
 export default function Crew() {
   const [id] = useState(window.location.pathname.split("/")[2])
@@ -44,7 +45,6 @@ export default function Crew() {
   return (
     <div className="crew">
       <Container className="form">
-      <h1 style={{textAlign: "center"}}>Informations</h1>
         <Form onSubmit={(e) => updateCrew(e)}>
           <Form.Group className="mb-3">
             <Form.Label>Nom</Form.Label>
@@ -90,14 +90,17 @@ export default function Crew() {
               }}
             />
           </Form.Group>
-
-          <button className="btn-form" type="submit">
-            <FontAwesomeIcon icon={faEdit} /> Modifier
-          </button>
+          
+          <div>
+            <button className="btn-form" type="submit">
+              <FontAwesomeIcon icon={faEdit} /> Modifier
+            </button>
+            <button className="btn-delete" onClick={deleteCrew} type="submit">
+              <FontAwesomeIcon icon={faTrash} /> Supprimer
+            </button>
+          </div>
         </Form>
-        <Button variant="danger" onClick={deleteCrew} type="submit">
-          Supprimer
-        </Button>
+        
       </Container>
     </div>
   )

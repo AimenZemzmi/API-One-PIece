@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -12,35 +12,35 @@ let db;
 
 try {
   db = mongoose.connect(
-    "mongodb+srv://coucou:coucou@cluster0.lc16o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    'mongodb+srv://coucou:coucou@cluster0.lc16o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
     { useNewUrlParser: true }
   );
 } catch (e) {
-  throw new Error("Database error");
+  throw new Error('Database error');
 }
-const { jwtSecret } = require("./package.json");
+const { jwtSecret } = require('./package.json');
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.get("/", function (req, res) {
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end("<h1>Bienvenue Chez les pirates</h1>");
+app.get('/', function (req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end('<h1>Bienvenue Chez les pirates</h1>');
 });
 
-app.get("/crew", async function (req, res) {
+app.get('/crew', async function (req, res) {
   const datas = await crewModel.find({});
 
   res.status(200).json(datas);
 });
 
-app.get("/crew/:id", async function (req, res) {
+app.get('/crew/:id', async function (req, res) {
   const { id } = req.params;
 
   if (isNaN(parseInt(id))) {
-    res.writeHead(400, { "Content-Type": "text/html" });
-    res.end("Wrong id format");
+    res.writeHead(400, { 'Content-Type': 'text/html' });
+    res.end('Wrong id format');
     return null;
   }
   const datas = await crewModel.findById({ _id: id });
@@ -48,7 +48,7 @@ app.get("/crew/:id", async function (req, res) {
   res.status(200).json(datas);
 });
 
-app.post("/crew", async function (req, res) {
+app.post('/crew', async function (req, res) {
   const { name, ship, picture } = req.body;
 
   const datas = await crewModel.create({
@@ -56,10 +56,10 @@ app.post("/crew", async function (req, res) {
     ship,
     picture,
   });
-  res.status(201).json({ id: datas["_id"] });
+  res.status(201).json({ id: datas['_id'] });
 });
 
-app.put("/crew/:id", async function (req, res) {
+app.put('/crew/:id', async function (req, res) {
   // La modification d'un utilisateur
   const { _id, name } = req.params;
 
@@ -67,7 +67,7 @@ app.put("/crew/:id", async function (req, res) {
   res.status(201).json(datas);
 });
 
-app.put("/updateCrew/:id", async function (req, res) {
+app.put('/updateCrew/:id', async function (req, res) {
   const { name, ship, picture } = req.body;
   console.log(req.params.id);
   const data = await crewModel.updateOne(
@@ -78,7 +78,7 @@ app.put("/updateCrew/:id", async function (req, res) {
 });
 
 //delete a crew from the db
-app.delete("/crew/:id", async function (req, res) {
+app.delete('/crew/:id', async function (req, res) {
   const id = req.params.id;
   console.log(id);
   await crewModel.deleteOne({ _id: id });
@@ -126,5 +126,41 @@ app.delete("/character/:id", async function (req, res) {
   console.log(id);
   await characterModel.deleteOne({ _id: id });
 });
+
+app.get("/character", async function (req, res) {
+  const datas = await characterModel.find({});
+
+  res.status(200).json(datas);
+});
+
+app.get("/character/:id", async function (req, res) {
+  const { id } = req.params;
+
+  if (isNaN(parseInt(id))) {
+    res.writeHead(400, { "Content-Type": "text/html" });
+    res.end("Wrong id format");
+    return null;
+  }
+  const datas = await characterModel.findById({ _id: id });
+});
+
+app.get('/search', async function (req, res) {
+  const search = new URLSearchParams(req.query).get('search');
+  const crews = await crewModel.find({
+    name: { $regex: '.*' + search + '.*', $options: 'i' },
+  });
+  const characters = await characterModel.find({
+    name: { $regex: '.*' + search + '.*', $options: 'i' },
+  });
+  console.log(characters);
+
+  const datas = {
+    crews,
+    characters,
+  };
+
+  res.status(200).json(datas);
+});
+
 
 module.exports = app;
